@@ -1,5 +1,5 @@
 // src/dtos/auth.dto.ts
-import { IsEmail, IsNotEmpty, IsString, MinLength, Matches } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, MinLength, Matches, Length } from 'class-validator';
 
 export class CheckEmailDto {
   @IsEmail({}, { message: 'Please provide a valid email address.' })
@@ -43,4 +43,43 @@ export class RegisterDto {
   @IsNotEmpty({ message: 'OTP should not be empty.' })
   @MinLength(6, { message: 'OTP must be at least 6 characters long.' })
   otp!: string;
+}
+
+export class Verify2FADto {
+  @IsEmail({}, { message: 'Please provide a valid email address.' })
+  @IsNotEmpty({ message: 'Email should not be empty.' })
+  email!: string;
+
+  @IsString()
+  @IsNotEmpty({ message: '2FA token should not be empty.' })
+  // Google Authenticator typically generates 6-digit codes
+  @Length(6, 6, { message: '2FA token must be 6 digits.' })
+  token!: string;
+}
+
+export class Setup2FARequestDto {
+  @IsEmail({}, { message: 'Please provide a valid email address.' })
+  @IsNotEmpty({ message: 'Email should not be empty.' })
+  email!: string;
+}
+
+export class LoginDto {
+  @IsEmail({}, { message: 'Please provide a valid email address.' })
+  @IsNotEmpty({ message: 'Email should not be empty.' })
+  email!: string;
+
+  @IsString()
+  @IsNotEmpty({ message: 'Password should not be empty.' })
+  password!: string;
+}
+
+export class LoginVerify2FADto {
+  @IsEmail({}, { message: 'Please provide a valid email address.' })
+  @IsNotEmpty({ message: 'Email should not be empty.' })
+  email!: string; // Or userId if you prefer to pass that after initial login step
+
+  @IsString()
+  @IsNotEmpty({ message: '2FA token should not be empty.' })
+  @Length(6, 6, { message: '2FA token must be 6 digits.' })
+  token!: string;
 }
