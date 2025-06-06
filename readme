@@ -1,0 +1,70 @@
+1. Project Setup
+Create a new project directory and navigate into it using the terminal.
+Initialize a new Node.js project using npm init -y.
+Install TypeScript, Express, and their type definitions: 
+Code
+
+    npm install express typescript
+    npm install --save-dev @types/node @types/express
+Create a tsconfig.json file to configure TypeScript:
+Code
+
+    npx tsc --init
+2. Create the Server File
+Create a src directory and a server.ts file inside it.
+Add the following code to server.ts:
+
+
+3. Running the Server
+Using ts-node:
+Install ts-node to run TypeScript files directly:
+Code
+
+        npm install --save-dev ts-node
+Run the server using.
+Code
+
+         npx ts-node src/server.ts
+Using tsc (TypeScript compiler):
+Compile the TypeScript code into JavaScript:
+Code
+
+        npx tsc
+Run the compiled JavaScript file.
+Code
+
+        node dist/server.js
+Using tsx:
+Install tsx:
+Code
+
+        npm install --save-dev tsx
+run the server.
+Code
+
+        npx tsx src/server.ts
+With Nodemon:
+Install nodemon:
+Code
+
+        npm install --save-dev nodemon
+Modify package.json to include a dev script.
+Code
+
+        "scripts": {
+          "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node src/server.ts'"
+        }
+Run the server using.
+Code
+
+        npm run dev
+
+
+4. Explanation
+ts-node allows you to execute TypeScript files without compiling them first.
+tsc compiles TypeScript into JavaScript, which Node.js can execute.
+tsx is a faster alternative to ts-node using the esbuild bundler.
+Nodemon automatically restarts the server when changes are detected in the source files.
+5. Important Considerations
+For production, it's best to compile your TypeScript code to JavaScript and run the JavaScript files.
+Consider using a linter like ESLint with TypeScript support for better code quality.        

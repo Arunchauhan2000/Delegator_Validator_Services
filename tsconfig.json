@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2017", // Ya aapka pasandeeda ECMAScript target
+    "module": "commonjs",
+    "lib": ["es6", "dom"], // 'dom' add karein agar aap DOM APIs ka istemal kar rahe hain
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,   // <--- Yeh zaroori hai
+    "emitDecoratorMetadata": true,    // <--- Yeh bhi zaroori hai
+    "outDir": "./dist",               // Aapka output directory
+    "rootDir": "./src",               // Aapka source directory
+    "resolveJsonModule": true,        // Agar aap JSON files import karte hain
+    "sourceMap": true                 // Development ke liye accha hai
+    // ... any other options you have
+  },
+  "include": [
+    "src/**/*.ts" // Aapke TypeScript files ka path
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
